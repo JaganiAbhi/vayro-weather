@@ -1,0 +1,596 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    width: 100%;
+    height: 100%;
+  }
+  
+  body {
+    @apply text-gray-800;
+    font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Soft light blue sky background */
+    background: linear-gradient(180deg, #e1f5fe 0%, #b3e5fc 30%, #81d4fa 70%, #64b5f6 100%);
+  }
+  
+  .dark body {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #020617 100%);
+    color: #F9FAFB;
+  }
+  
+  #root {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  /* Additional utilities if needed */
+}
+
+/* ============================================
+   VAYRO CLOUD BACKGROUND SYSTEM
+   Living Sky with Animated Clouds
+   ============================================ */
+
+.cloud-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  isolation: isolate;
+  /* Soft light blue sky - airy daytime sky feel */
+  background: linear-gradient(180deg, #e1f5fe 0%, #b3e5fc 30%, #81d4fa 70%, #64b5f6 100%);
+}
+
+.dark .cloud-background {
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #020617 100%);
+}
+
+/* ============================================
+   CLOUD PARTICLES - Soft Abstract Shapes
+   ============================================ */
+
+.cloud-particle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.6;
+  will-change: transform;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  mix-blend-mode: overlay;
+  --cursor-x: 0px;
+  --cursor-y: 0px;
+}
+
+/* Light Mode Clouds - Soft Sky Blue */
+.cloud-1 {
+  width: 200px;
+  height: 120px;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(219, 234, 254, 0.6) 30%,
+    rgba(191, 219, 254, 0.4) 60%,
+    transparent 100%
+  );
+  top: 10%;
+  left: 5%;
+  animation: floatCloud1 45s ease-in-out infinite;
+}
+
+.cloud-2 {
+  width: 280px;
+  height: 160px;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(219, 234, 254, 0.55) 25%,
+    rgba(191, 219, 254, 0.35) 50%,
+    transparent 80%
+  );
+  top: 25%;
+  right: 10%;
+  animation: floatCloud2 50s ease-in-out infinite reverse;
+}
+
+.cloud-3 {
+  width: 240px;
+  height: 140px;
+  background: radial-gradient(
+    ellipse at 40% 60%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(219, 234, 254, 0.5) 30%,
+    rgba(191, 219, 254, 0.3) 60%,
+    transparent 90%
+  );
+  top: 50%;
+  left: 15%;
+  animation: floatCloud3 42s ease-in-out infinite;
+}
+
+.cloud-4 {
+  width: 320px;
+  height: 180px;
+  background: radial-gradient(
+    ellipse at 60% 50%,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(219, 234, 254, 0.45) 28%,
+    rgba(191, 219, 254, 0.25) 55%,
+    transparent 85%
+  );
+  top: 60%;
+  right: 8%;
+  animation: floatCloud4 48s ease-in-out infinite reverse;
+}
+
+.cloud-5 {
+  width: 180px;
+  height: 100px;
+  background: radial-gradient(
+    ellipse at 35% 45%,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(219, 234, 254, 0.55) 32%,
+    rgba(191, 219, 254, 0.35) 65%,
+    transparent 95%
+  );
+  top: 5%;
+  left: 50%;
+  animation: floatCloud5 40s ease-in-out infinite;
+}
+
+.cloud-6 {
+  width: 260px;
+  height: 150px;
+  background: radial-gradient(
+    ellipse at 45% 55%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(219, 234, 254, 0.5) 30%,
+    rgba(191, 219, 254, 0.3) 60%,
+    transparent 90%
+  );
+  top: 35%;
+  left: 45%;
+  animation: floatCloud6 46s ease-in-out infinite reverse;
+}
+
+.cloud-7 {
+  width: 220px;
+  height: 130px;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(219, 234, 254, 0.6) 25%,
+    rgba(191, 219, 254, 0.4) 50%,
+    transparent 80%
+  );
+  top: 70%;
+  left: 25%;
+  animation: floatCloud7 44s ease-in-out infinite;
+}
+
+.cloud-8 {
+  width: 300px;
+  height: 170px;
+  background: radial-gradient(
+    ellipse at 40% 60%,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(219, 234, 254, 0.45) 28%,
+    rgba(191, 219, 254, 0.25) 55%,
+    transparent 85%
+  );
+  top: 15%;
+  left: 70%;
+  animation: floatCloud8 52s ease-in-out infinite reverse;
+}
+
+.cloud-9 {
+  width: 190px;
+  height: 110px;
+  background: radial-gradient(
+    ellipse at 55% 45%,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(219, 234, 254, 0.55) 30%,
+    rgba(191, 219, 254, 0.35) 60%,
+    transparent 90%
+  );
+  top: 45%;
+  right: 25%;
+  animation: floatCloud9 41s ease-in-out infinite;
+}
+
+.cloud-10 {
+  width: 270px;
+  height: 155px;
+  background: radial-gradient(
+    ellipse at 35% 50%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(219, 234, 254, 0.5) 32%,
+    rgba(191, 219, 254, 0.3) 65%,
+    transparent 95%
+  );
+  top: 75%;
+  right: 15%;
+  animation: floatCloud10 49s ease-in-out infinite reverse;
+}
+
+.cloud-11 {
+  width: 210px;
+  height: 125px;
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(219, 234, 254, 0.55) 28%,
+    rgba(191, 219, 254, 0.35) 55%,
+    transparent 85%
+  );
+  top: 30%;
+  left: 65%;
+  animation: floatCloud11 43s ease-in-out infinite;
+}
+
+.cloud-12 {
+  width: 250px;
+  height: 145px;
+  background: radial-gradient(
+    ellipse at 45% 40%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(219, 234, 254, 0.5) 30%,
+    rgba(191, 219, 254, 0.3) 60%,
+    transparent 90%
+  );
+  top: 55%;
+  left: 5%;
+  animation: floatCloud12 47s ease-in-out infinite reverse;
+}
+
+/* Dark Mode Clouds - Night Fog Effect */
+.dark .cloud-particle {
+  opacity: 0.5;
+  filter: blur(50px);
+  mix-blend-mode: soft-light;
+}
+
+.dark .cloud-1 {
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(51, 65, 85, 0.6) 0%,
+    rgba(30, 41, 59, 0.45) 30%,
+    rgba(15, 23, 42, 0.3) 60%,
+    transparent 100%
+  );
+  animation: floatCloud1 60s ease-in-out infinite;
+}
+
+.dark .cloud-2 {
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(51, 65, 85, 0.55) 0%,
+    rgba(30, 41, 59, 0.4) 25%,
+    rgba(15, 23, 42, 0.25) 50%,
+    transparent 80%
+  );
+  animation: floatCloud2 65s ease-in-out infinite reverse;
+}
+
+.dark .cloud-3 {
+  background: radial-gradient(
+    ellipse at 40% 60%,
+    rgba(51, 65, 85, 0.5) 0%,
+    rgba(30, 41, 59, 0.35) 30%,
+    rgba(15, 23, 42, 0.2) 60%,
+    transparent 90%
+  );
+  animation: floatCloud3 58s ease-in-out infinite;
+}
+
+.dark .cloud-4 {
+  background: radial-gradient(
+    ellipse at 60% 50%,
+    rgba(51, 65, 85, 0.45) 0%,
+    rgba(30, 41, 59, 0.3) 28%,
+    rgba(15, 23, 42, 0.15) 55%,
+    transparent 85%
+  );
+  animation: floatCloud4 62s ease-in-out infinite reverse;
+}
+
+.dark .cloud-5 {
+  background: radial-gradient(
+    ellipse at 35% 45%,
+    rgba(51, 65, 85, 0.55) 0%,
+    rgba(30, 41, 59, 0.4) 32%,
+    rgba(15, 23, 42, 0.25) 65%,
+    transparent 95%
+  );
+  animation: floatCloud5 55s ease-in-out infinite;
+}
+
+.dark .cloud-6 {
+  background: radial-gradient(
+    ellipse at 45% 55%,
+    rgba(51, 65, 85, 0.5) 0%,
+    rgba(30, 41, 59, 0.35) 30%,
+    rgba(15, 23, 42, 0.2) 60%,
+    transparent 90%
+  );
+  animation: floatCloud6 61s ease-in-out infinite reverse;
+}
+
+.dark .cloud-7 {
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(51, 65, 85, 0.6) 0%,
+    rgba(30, 41, 59, 0.45) 25%,
+    rgba(15, 23, 42, 0.3) 50%,
+    transparent 80%
+  );
+  animation: floatCloud7 59s ease-in-out infinite;
+}
+
+.dark .cloud-8 {
+  background: radial-gradient(
+    ellipse at 40% 60%,
+    rgba(51, 65, 85, 0.45) 0%,
+    rgba(30, 41, 59, 0.3) 28%,
+    rgba(15, 23, 42, 0.15) 55%,
+    transparent 85%
+  );
+  animation: floatCloud8 67s ease-in-out infinite reverse;
+}
+
+.dark .cloud-9 {
+  background: radial-gradient(
+    ellipse at 55% 45%,
+    rgba(51, 65, 85, 0.55) 0%,
+    rgba(30, 41, 59, 0.4) 30%,
+    rgba(15, 23, 42, 0.25) 60%,
+    transparent 90%
+  );
+  animation: floatCloud9 56s ease-in-out infinite;
+}
+
+.dark .cloud-10 {
+  background: radial-gradient(
+    ellipse at 35% 50%,
+    rgba(51, 65, 85, 0.5) 0%,
+    rgba(30, 41, 59, 0.35) 32%,
+    rgba(15, 23, 42, 0.2) 65%,
+    transparent 95%
+  );
+  animation: floatCloud10 64s ease-in-out infinite reverse;
+}
+
+.dark .cloud-11 {
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    rgba(51, 65, 85, 0.55) 0%,
+    rgba(30, 41, 59, 0.4) 28%,
+    rgba(15, 23, 42, 0.25) 55%,
+    transparent 85%
+  );
+  animation: floatCloud11 57s ease-in-out infinite;
+}
+
+.dark .cloud-12 {
+  background: radial-gradient(
+    ellipse at 45% 40%,
+    rgba(51, 65, 85, 0.5) 0%,
+    rgba(30, 41, 59, 0.35) 30%,
+    rgba(15, 23, 42, 0.2) 60%,
+    transparent 90%
+  );
+  animation: floatCloud12 63s ease-in-out infinite reverse;
+}
+
+/* ============================================
+   ANTI-GRAVITY CLOUD ANIMATIONS
+   Floating, Drifting, Rotating Movement
+   ============================================ */
+
+/* Enhanced animations with more horizontal/diagonal movement and parallax depth */
+
+/* Deep layer - slowest, largest movements (far clouds) */
+@keyframes floatCloud1 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(120px, -30px) rotate(2deg) scale(1.05);
+  }
+  50% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(240px, -15px) rotate(-3deg) scale(0.95);
+  }
+  75% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(180px, -40px) rotate(1deg) scale(1.02);
+  }
+}
+
+@keyframes floatCloud2 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  30% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-180px, -25px) rotate(-2deg) scale(1.08);
+  }
+  60% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-320px, -10px) rotate(4deg) scale(0.92);
+  }
+}
+
+/* Mid layer - medium speed (middle clouds) */
+@keyframes floatCloud3 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  20% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(90px, 45px) rotate(3deg) scale(1.06);
+  }
+  40% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(180px, 20px) rotate(-2deg) scale(0.94);
+  }
+  60% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(140px, 55px) rotate(1deg) scale(1.03);
+  }
+  80% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(60px, 30px) rotate(-1deg) scale(0.97);
+  }
+}
+
+@keyframes floatCloud4 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  35% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-140px, 30px) rotate(-3deg) scale(1.07);
+  }
+  70% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-260px, 10px) rotate(5deg) scale(0.93);
+  }
+}
+
+@keyframes floatCloud5 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(100px, -35px) rotate(2deg) scale(1.04);
+  }
+  50% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(200px, -15px) rotate(-2deg) scale(0.96);
+  }
+  75% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(150px, -45px) rotate(1deg) scale(1.01);
+  }
+}
+
+@keyframes floatCloud6 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  28% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-130px, -40px) rotate(-2deg) scale(1.09);
+  }
+  56% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-240px, -10px) rotate(3deg) scale(0.91);
+  }
+}
+
+/* Near layer - faster movement (close clouds) */
+@keyframes floatCloud7 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  22% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(110px, 40px) rotate(2deg) scale(1.05);
+  }
+  44% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(220px, 18px) rotate(-3deg) scale(0.95);
+  }
+  66% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(160px, 50px) rotate(1deg) scale(1.02);
+  }
+  88% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(70px, 25px) rotate(-1deg) scale(0.98);
+  }
+}
+
+@keyframes floatCloud8 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  32% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-160px, 35px) rotate(-2deg) scale(1.08);
+  }
+  64% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-300px, 5px) rotate(4deg) scale(0.92);
+  }
+}
+
+@keyframes floatCloud9 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  24% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(95px, -38px) rotate(2deg) scale(1.06);
+  }
+  48% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(200px, -18px) rotate(-2deg) scale(0.94);
+  }
+  72% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(150px, -48px) rotate(1deg) scale(1.03);
+  }
+}
+
+@keyframes floatCloud10 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-150px, 36px) rotate(-3deg) scale(1.07);
+  }
+  66% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-280px, 12px) rotate(5deg) scale(0.93);
+  }
+}
+
+@keyframes floatCloud11 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  26% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(105px, 42px) rotate(3deg) scale(1.05);
+  }
+  52% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(210px, 20px) rotate(-2deg) scale(0.95);
+  }
+  78% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(155px, 52px) rotate(1deg) scale(1.02);
+  }
+}
+
+@keyframes floatCloud12 {
+  0%, 100% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(0, 0) rotate(0deg) scale(1);
+  }
+  29% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-140px, -34px) rotate(-2deg) scale(1.08);
+  }
+  58% {
+    transform: translate(var(--cursor-x), var(--cursor-y)) translate(-260px, -8px) rotate(3deg) scale(0.92);
+  }
+}
+
+/* Ensure content is above background */
+.relative.z-10 {
+  position: relative;
+  z-index: 10;
+}
+
