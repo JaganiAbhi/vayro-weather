@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # VAYRO
 
 A modern, clean, and production-ready Weather App built with React and Tailwind CSS.
@@ -45,3 +46,6 @@ npm run build
 ## License
 
 Private project
+=======
+# vayro-weather
+>>>>>>> 71123f6f3c9850e34a63c4c8aec42761aa6b935a
