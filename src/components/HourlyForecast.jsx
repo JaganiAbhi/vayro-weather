@@ -20,17 +20,17 @@ const HourlyForecast = ({ forecast, units }) => {
         {hourlyData.map((item, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-24 bg-white dark:bg-[#1F2937] rounded-2xl p-4 shadow-md hover:shadow-lg transition-shadow text-center"
+            className="flex-shrink-0 w-24 ios-glass rounded-2xl p-4 shadow-lg hover:bg-white/40 dark:hover:bg-gray-900/50 transition-all text-center"
           >
-            <p className="text-sm text-gray-600 dark:text-[#9CA3AF] mb-2">
+            <p className="text-sm text-gray-100 font-medium mb-2 drop-shadow-sm">
               {index === 0 ? 'Now' : formatTime(item.dt)}
             </p>
             <img
               src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
               alt={item.weather[0].description}
-              className="w-12 h-12 mx-auto mb-2"
+              className="w-12 h-12 mx-auto mb-2 drop-shadow-md"
             />
-            <p className="text-lg font-bold text-gray-900 dark:text-white">
+            <p className="text-lg font-bold text-white drop-shadow-md">
               {Math.round(item.main.temp)}°
             </p>
           </div>

@@ -75,16 +75,16 @@ const WeatherDetails = ({ weather, units }) => {
         {details.map((detail, index) => (
           <div
             key={index}
-            className="bg-white dark:bg-[#1F2937] rounded-2xl p-4 shadow-md hover:shadow-lg transition-shadow"
+            className="ios-glass rounded-2xl p-4 shadow-lg hover:bg-white/40 dark:hover:bg-gray-900/50 transition-all"
           >
             <div className="flex flex-col items-center text-center">
-              <div className="text-blue-500 dark:text-blue-400 mb-2">
+              <div className="text-white drop-shadow-md mb-2">
                 {detail.icon}
               </div>
-              <p className="text-xs text-gray-500 dark:text-[#9CA3AF] mb-1">
+              <p className="text-xs text-blue-100 dark:text-gray-300 font-medium mb-1 drop-shadow-sm">
                 {detail.label}
               </p>
-              <p className="text-base font-semibold text-gray-900 dark:text-white">
+              <p className="text-base font-bold text-white drop-shadow-md">
                 {detail.value}
               </p>
             </div>
