@@ -216,6 +216,9 @@ function Weather() {
                     <Header
                         city={weather?.name}
                         country={weather?.sys?.country}
+                        timezone={weather?.timezone}
+                        sunrise={weather?.sys?.sunrise}
+                        sunset={weather?.sys?.sunset}
                         onSearchClick={() => setIsSearchOpen(true)}
                         onLocationClick={handleGeolocation}
                         loading={loading}

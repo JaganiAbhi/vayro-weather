@@ -1,29 +1,46 @@
-import React from 'react';
+import CityTime from './CityTime';
 
-const Header = ({ city, country, onSearchClick, onLocationClick, loading }) => {
+const Header = ({ city, country, timezone, sunrise, sunset, onSearchClick, onLocationClick, loading }) => {
   const currentDate = new Date();
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const formattedDate = currentDate.toLocaleDateString('en-US', options);
 
   return (
-    <header className="mb-6">
-      <div className="flex items-start justify-between mb-2">
+    <header className="mb-8">
+      <div className="flex items-start justify-between">
         <div className="flex-1 drop-shadow-md">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-1 drop-shadow-lg">
+          {/* Brand/Logo always at top left */}
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-1 drop-shadow-lg tracking-tight">
             {city || 'VAYRO'}
           </h1>
-          {!city && (
-            <p className="text-sm text-gray-100 italic">Weather, refined.</p>
+
+          {/* Secondary Info: Country or Slogan */}
+          {!city ? (
+            <p className="text-sm text-gray-100 italic opacity-80">Weather, refined.</p>
+          ) : (
+            country && (
+              <p className="text-sm text-blue-50 font-medium tracking-wide opacity-90">{country}</p>
+            )
           )}
-          {country && (
-            <p className="text-sm text-gray-100 font-medium">{country}</p>
-          )}
+
+          {/* Dynamic City Time - Stacked Under City Name */}
+          <div className="mt-4">
+            {city && timezone !== undefined ? (
+              <CityTime timezone={timezone} sunrise={sunrise} sunset={sunset} />
+            ) : (
+              <p className="text-sm text-white/80 drop-shadow-md font-medium tracking-wide uppercase">
+                {formattedDate}
+              </p>
+            )}
+          </div>
         </div>
-        <div className="flex gap-2">
+
+        {/* Right Side: Search & Location Controls */}
+        <div className="flex gap-2 ml-4">
           <button
             onClick={onSearchClick}
             disabled={loading}
-            className="p-2 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md text-white shadow-lg transition-all disabled:opacity-50"
+            className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white shadow-lg transition-all border border-white/20 disabled:opacity-50"
             aria-label="Search"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,7 +50,7 @@ const Header = ({ city, country, onSearchClick, onLocationClick, loading }) => {
           <button
             onClick={onLocationClick}
             disabled={loading}
-            className="p-2 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md text-white shadow-lg transition-all disabled:opacity-50"
+            className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-xl text-white shadow-lg transition-all border border-white/20 disabled:opacity-50"
             aria-label="Use my location"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,7 +60,6 @@ const Header = ({ city, country, onSearchClick, onLocationClick, loading }) => {
           </button>
         </div>
       </div>
-      <p className="text-sm text-gray-100 drop-shadow-md font-medium">{formattedDate}</p>
     </header>
   );
 };
